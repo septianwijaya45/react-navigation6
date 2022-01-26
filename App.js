@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontSize: 30,
-    fontWeight: 'bold',
     color: '#20315f',
+    fontFamily: 'Inter-Bold',
   },
   begin: {
     backgroundColor: '#AD40AF',
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   },
   textBegin: {
     fontSize: 18,
-    fontWeight: 'bold',
     color: '#fff',
+    fontFamily: 'Roboto-MediumItalic',
   },
 });
 
