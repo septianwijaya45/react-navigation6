@@ -18,7 +18,41 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {GamingIcon} from './assets/Images';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
 const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Main">
+        <Stack.Screen
+          name="Main"
+          component={Main}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const Home = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <Text style={{color: '#000'}}>Home Screen</Text>
+    </View>
+  );
+};
+
+const Main = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.title}>
@@ -27,7 +61,11 @@ const App = () => {
       <View style={styles.gamingSection}>
         <GamingIcon width={300} height={300} style={styles.gamingIcon} />
       </View>
-      <TouchableOpacity style={styles.begin}>
+      <TouchableOpacity
+        style={styles.begin}
+        onPress={() => {
+          navigation.navigate('Home');
+        }}>
         <Text style={styles.textBegin}>Let's Begin</Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
       </TouchableOpacity>
