@@ -3,7 +3,7 @@ module.exports = {
     ios: {},
     android: {},
   },
-  assets: ['./assets/fonts/'],
+  assets: ['./src/assets/fonts/'],
 };
 
 // and then run "npx react-native link"

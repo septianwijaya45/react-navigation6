@@ -16,10 +16,11 @@ import {
 } from 'react-native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {GamingIcon} from './assets/Images';
+import {GamingIcon} from './src/assets/Images';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,23 +33,13 @@ const App = () => {
           component={Main}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
-
-const Home = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-      }}>
-      <Text style={{color: '#000'}}>Home Screen</Text>
-    </View>
   );
 };
 
