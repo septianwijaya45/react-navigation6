@@ -16,12 +16,16 @@ import {
 } from 'react-native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {GamingIcon} from './assets/Images';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <View style={styles.title}>
         <Text style={styles.textTitle}>GAMEON</Text>
+      </View>
+      <View style={styles.gamingSection}>
+        <GamingIcon width={300} height={300} style={styles.gamingIcon} />
       </View>
       <TouchableOpacity style={styles.begin}>
         <Text style={styles.textBegin}>Let's Begin</Text>
@@ -37,11 +41,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+    paddingVertical: 50,
   },
   textTitle: {
     fontSize: 30,
     color: '#20315f',
     fontFamily: 'Inter-Bold',
+  },
+  gamingSection: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  gamingIcon: {
+    transform: [{rotate: '-20deg'}],
+    marginBottom: 20,
   },
   begin: {
     backgroundColor: '#AD40AF',
