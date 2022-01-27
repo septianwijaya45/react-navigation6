@@ -9,15 +9,15 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
-import {ProfileImage} from '../assets/Images';
 
 import Feather from 'react-native-vector-icons/Feather';
-import {freeGames, paidGames, sliderData} from '../model/data';
+import {freeGames, paidGames, sliderData} from '../../model/data';
 import Carousel from 'react-native-snap-carousel';
-import BannerSlider from '../components/BannerSlider';
-import {windowHeight, windowWidth} from '../utils/dimension';
-import CustomSwitch from '../components/CustomSwitch';
-import ListItem from '../components/ListItem';
+import BannerSlider from '../../components/BannerSlider';
+import {windowHeight, windowWidth} from '../../utils/dimension';
+import CustomSwitch from '../../components/CustomSwitch';
+import ListItem from '../../components/ListItem';
+import {ProfileImage} from '../../assets/Images';
 
 const HomeScreen = ({navigation}) => {
   const [gamesTab, setGamesTab] = useState(1);
