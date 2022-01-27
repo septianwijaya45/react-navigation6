@@ -15,7 +15,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {freeGames, paidGames, sliderData} from '../model/data';
 import Carousel from 'react-native-snap-carousel';
 import BannerSlider from '../components/BannerSlider';
-import {windowWidth} from '../utils/dimension';
+import {windowHeight, windowWidth} from '../utils/dimension';
 import CustomSwitch from '../components/CustomSwitch';
 import ListItem from '../components/ListItem';
 
@@ -30,7 +30,7 @@ const HomeScreen = ({navigation}) => {
   };
   return (
     <SafeAreaView>
-      <ScrollView style={styles.scrollview}>
+      <View style={{height: windowHeight}}>
         <View style={styles.header}>
           <Text style={styles.textHello}>Hello Septian!</Text>
           <TouchableOpacity
@@ -40,75 +40,77 @@ const HomeScreen = ({navigation}) => {
             <Image source={ProfileImage} style={styles.imageProfile} />
           </TouchableOpacity>
         </View>
+        <ScrollView style={styles.scrollview}>
+          <View style={styles.searchView}>
+            <Feather
+              name="search"
+              size={20}
+              color="#C6C6C6"
+              style={styles.iconInput}
+            />
+            <TextInput
+              placeholder="Search"
+              style={styles.inputSearch}
+              placeholderTextColor={'#000'}
+            />
+          </View>
 
-        <View style={styles.searchView}>
-          <Feather
-            name="search"
-            size={20}
-            color="#C6C6C6"
-            style={styles.iconInput}
+          <View style={styles.upcomingView}>
+            <Text style={styles.upcomingText}>Upcoming Games</Text>
+            <TouchableOpacity>
+              <Text style={{color: '#0aada8'}}>See all</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Carousel
+            ref={c => {
+              this._carousel = c;
+            }}
+            data={sliderData}
+            renderItem={renderBanner}
+            sliderWidth={windowWidth - 40}
+            itemWidth={300}
+            loop={true}
+            autoplay={true}
           />
-          <TextInput
-            placeholder="Search"
-            style={styles.inputSearch}
-            placeholderTextColor={'#000'}
-          />
-        </View>
 
-        <View style={styles.upcomingView}>
-          <Text style={styles.upcomingText}>Upcoming Games</Text>
-          <TouchableOpacity>
-            <Text style={{color: '#0aada8'}}>See all</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={{marginVertical: 20}}>
+            <CustomSwitch
+              selectionMode={1}
+              option1="Free to Play"
+              option2="Paid Game"
+              onSelectSwitch={onSelectSwitch}
+            />
+          </View>
 
-        <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          data={sliderData}
-          renderItem={renderBanner}
-          sliderWidth={windowWidth - 40}
-          itemWidth={300}
-          loop={true}
-        />
-
-        <View style={{marginVertical: 20}}>
-          <CustomSwitch
-            selectionMode={1}
-            option1="Free to Play"
-            option2="Paid Game"
-            onSelectSwitch={onSelectSwitch}
-          />
-        </View>
-
-        <View style={{marginBottom: 10}}>
-          {gamesTab == 1 &&
-            freeGames.map(item => (
-              <ListItem
-                key={item.id}
-                data={item}
-                photo={item.poster}
-                title={item.title}
-                subtitle={item.subtitle}
-                isFree={item.isFree}
-                price={item.price}
-              />
-            ))}
-          {gamesTab == 2 &&
-            paidGames.map(item => (
-              <ListItem
-                key={item.id}
-                data={item}
-                photo={item.poster}
-                title={item.title}
-                subtitle={item.subtitle}
-                isFree={item.isFree}
-                price={item.price}
-              />
-            ))}
-        </View>
-      </ScrollView>
+          <View style={{marginBottom: 10}}>
+            {gamesTab == 1 &&
+              freeGames.map(item => (
+                <ListItem
+                  key={item.id}
+                  data={item}
+                  photo={item.poster}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  isFree={item.isFree}
+                  price={item.price}
+                />
+              ))}
+            {gamesTab == 2 &&
+              paidGames.map(item => (
+                <ListItem
+                  key={item.id}
+                  data={item}
+                  photo={item.poster}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  isFree={item.isFree}
+                  price={item.price}
+                />
+              ))}
+          </View>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -122,7 +124,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginHorizontal: 20,
+    marginVertical: 10,
   },
   textHello: {
     fontSize: 16,

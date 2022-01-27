@@ -21,6 +21,11 @@ import {GamingIcon} from './src/assets/Images';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
+import {LogBox} from 'react-native';
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
 
 const Stack = createNativeStackNavigator();
 
