@@ -1,7 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import ProfileScreen from '../screens/ProfileScreen';
 import MessageScreen from '../screens/MessageScreen';
@@ -10,6 +9,7 @@ import SettingScreen from '../screens/SettingScreen';
 import CustomDrawer from '../components/CustomDrawer';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,8 +31,8 @@ const AppStack = () => {
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
       <Drawer.Screen
-        name="Home"
-        component={HomeScreen}
+        name="HomeScreen"
+        component={TabNavigator}
         options={{
           drawerIcon: ({color}) => (
             <Ionicons name="home-outline" size={22} color={color} />

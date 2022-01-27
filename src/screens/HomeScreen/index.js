@@ -94,6 +94,12 @@ const HomeScreen = ({navigation}) => {
                   subtitle={item.subtitle}
                   isFree={item.isFree}
                   price={item.price}
+                  onPress={() =>
+                    navigation.navigate('GameDetailScreen', {
+                      title: item.title,
+                      id: item.id,
+                    })
+                  }
                 />
               ))}
             {gamesTab == 2 &&
@@ -106,6 +112,12 @@ const HomeScreen = ({navigation}) => {
                   subtitle={item.subtitle}
                   isFree={item.isFree}
                   price={item.price}
+                  onPress={() =>
+                    navigation.navigate('GameDetailScreen', {
+                      title: item.title,
+                      id: item.id,
+                    })
+                  }
                 />
               ))}
           </View>
@@ -120,6 +132,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   scrollview: {
     padding: 20,
+    marginBottom: 50,
   },
   header: {
     flexDirection: 'row',

@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {windowWidth} from '../../utils/dimension';
 
-const ListItem = ({photo, title, subtitle, isFree, price}) => {
+const ListItem = ({photo, title, subtitle, isFree, price, onPress}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageView}>
@@ -10,11 +10,11 @@ const ListItem = ({photo, title, subtitle, isFree, price}) => {
         <View style={{width: windowWidth - 220}}>
           <Text style={styles.type}>{title}</Text>
           <Text numberOfLines={1} style={styles.title}>
-            Spider-Man
+            {subtitle}
           </Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.textButton}>
           {isFree == 'Yes' && 'Play'}
           {isFree == 'No' && price}
